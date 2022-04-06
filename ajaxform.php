@@ -121,7 +121,12 @@ $sqlquery = "INSERT INTO users(name,email,password,country_id,state_id,city_id) 
         </div>
    
 
-    
+        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label"><b>Upload File</b> </label>
+                            <div class="col-sm-5">
+                                <input type="file" class="form-control-file"  name="the_file" id="fileToUpload">
+                              </div>
+                        </div>
  
 
   
