@@ -37,7 +37,7 @@
 
 
 
-  if (move_uploaded_file($$fileTmpName, $file_store)) {
+  if (move_uploaded_file($fileTmpName, $file_store)) {
     echo "file upload successfully";
   } else {
     "file not upload";
