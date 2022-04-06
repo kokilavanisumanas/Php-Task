@@ -25,8 +25,8 @@
 
   $fileName = $_FILES['the_file']['name'];
 
-  print_r($_FILES);
-  exit;
+  // print_r($_FILES);
+  // exit;
   $fileSize = $_FILES['the_file']['size'];
   // print_r($fileSize);
   $fileTmpName  = $_FILES['the_file']['tmp_name'];
