@@ -18,7 +18,93 @@ $statename=$_POST['statename'];
 
 $cityname=$_POST['cityname'];
 
-$sqlquery = "INSERT INTO users(name,email,password,country_id,state_id,city_id) VALUES ('$name','$email','$encrypted_pwd','$countryname','$statename','$cityname')";
+
+  
+// $target_path = "/var/www/html/Php-Task/uploads";  
+// $target_path = $target_path.basename( $_FILES['fileToUpload']['name']);   
+  
+// if(move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target_path)) {  
+//     echo "File uploaded successfully!";  
+// } else{  
+//     echo "Sorry, file not uploaded, please try again!";  
+// }  
+
+    // if (isset($_POST['submit'])) {
+    //   $fileName = $_FILES['the_file']['name'];
+    //   // print_r($fileName);exit;
+    //   $fileSize = $_FILES['the_file']['size'];
+    //   // print_r($fileSize);exit;
+    //   $fileTmpName  = $_FILES['the_file']['tmp_name'];
+    //   // print_r($fileTmpName);exit;
+    //   $fileType = $_FILES['the_file']['type'];
+   
+    //   $file_store="/var/www/html/Php-Task/uploads".$fileName;
+    
+
+
+    //   if(move_uploaded_file($$fileTmpName,$file_store)){
+    //     echo"file upload successfully";
+    //   }
+    //   else{
+    //     "file not upload";
+    //   }
+    // }
+
+
+
+    $imgpath="";
+    $uploadDirectory = 'uploads/'; 
+    // echo 
+    // print_r($uploadDirectory);exit;
+    $errors = []; 
+    $fileExtensionsAllowed = ['jpeg','jpg','png'];  #allowed types
+    $fileName = $_FILES['the_file']['name'];
+    // echo $fileName;  exit;
+    $fileSize = $_FILES['the_file']['size'];
+    $fileTmpName  = $_FILES['the_file']['tmp_name'];
+    $fileType = $_FILES['the_file']['type'];
+    $time = time();
+      // echo $time;exit;
+    $fileExtension = strtolower(end(explode('.',$fileName)));
+    // echo $fileExtension;exit;
+    $uploadPath = $uploadDirectory.basename($_FILES['the_file']['name']);
+    // echo $uploadPath;exit;
+    $imgpath= $uploadPath.$time .".". $fileExtension;
+    // echo $imgpath;exit;
+    // print_r(basename($_FILES['the_file']['name']));
+    // print_r($_POST);
+
+    if (isset($_POST['submit'])) 
+    {
+
+      if (! in_array($fileExtension,$fileExtensionsAllowed)) {
+        $errors[] = "<h1>This file extension is not allowed. Please upload a JPEG or PNG file</h1>";
+      }
+
+      if ($fileSize > 4000000) {
+        $errors[] = "File exceeds maximum size (4MB)";
+      }
+
+      if (empty($errors)) 
+      {
+        $didUpload = move_uploaded_file($fileTmpName, $imgpath);
+
+        if ($didUpload) {
+          echo "<img src=".basename($fileName)."height=200 width=300 />";
+          // echo "The file " . basename($fileName) . " has been uploaded";
+        } else {
+          echo "<h1>An error occurred. Please contact the administrator.<h1>";
+        }
+      } 
+      else 
+      {
+        foreach ($errors as $error) 
+        {
+          echo $error . "<h1>These are the errors</h1>" . "\n";
+        }
+      }
+    }
+$sqlquery = "INSERT INTO users(name,email,password,country_id,state_id,city_id,image) VALUES ('$name','$email','$encrypted_pwd','$countryname','$statename','$cityname','$target_path')";
 
   $inserted = ($conn->query($sqlquery));
   // print_r($conn);exit;
@@ -124,7 +210,8 @@ $sqlquery = "INSERT INTO users(name,email,password,country_id,state_id,city_id) 
         <div class="form-group row">
                             <label class="col-sm-2 col-form-label"><b>Upload File</b> </label>
                             <div class="col-sm-5">
-                                <input type="file" class="form-control-file"  name="the_file" id="fileToUpload">
+                            <input type="file" name="the_file" id="fileToUpload">
+                               
                               </div>
                         </div>
  
