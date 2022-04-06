@@ -155,9 +155,9 @@
         <div class="form-group row">
           <label class="col-sm-2 col-form-label"><b>Upload File</b> </label>
           <div class="col-sm-5">
-            <div class="form-group row">
-              <label class="col-sm-4"><b>Upload Image</b> </label>
-              <div class="col-sm-8">
+            
+             
+          
                 <input type="file" class="form-control-file" name="the_file" id="fileToUpload">
               </div>
             </div>
