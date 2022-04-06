@@ -89,7 +89,7 @@ if (isset($_POST['submit']))
         <h2 style=text-align:center;>Log in</h2>
                 <form  action="" method="POST">
                 <div class="message text-danger"></div>
-                <div class="form-group row">
+                 <div class="form-group row">
                     <label for="exampleInputEmail1" class="col-sm-2 col-form-label">Username</label>
                    
                    <input type="text" name="username" class="form-control mt-3" placeholder="Enter Username" value=<?php if (isset($_POST['username'])) {
@@ -104,7 +104,7 @@ if (isset($_POST['submit']))
                                                                                                                             echo $_POST['password'];
                                                                                                                         } ?>>
                     <span class="text-danger"><?php if (!empty($password_errors)) echo  $password_errors; ?><?php if (!empty($err_pass)) echo  $err_pass; ?></span>
-<?php echo"dfhjd";?>
+
                 </div>
                 <br>
                 <button type="submit" value="submit" name="submit" >LOGIN</button>
