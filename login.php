@@ -104,7 +104,7 @@ if (isset($_POST['submit']))
                                                                                                                             echo $_POST['password'];
                                                                                                                         } ?>>
                     <span class="text-danger"><?php if (!empty($password_errors)) echo  $password_errors; ?><?php if (!empty($err_pass)) echo  $err_pass; ?></span>
-
+<?php echo"dfhjd";?>
                 </div>
                 <br>
                 <button type="submit" value="submit" name="submit" >LOGIN</button>
