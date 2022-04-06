@@ -1,5 +1,5 @@
 <?php include('database.php');
- ?>
+?>
 
 <?php
 session_start();
@@ -136,14 +136,14 @@ $cityresult = $conn->query($citiessql);
         <label class="col-sm-2 col-form-label">CityName</label>
         <div class="col-sm-5">
           <select class="form-control" id="city-dropdown" name="cityname">
-          <?php
+            <?php
 
 
 
-while ($datas = mysqli_fetch_array($cityresult)) {
-  echo '<option value="' . $datas['id'] . '">' . $datas['cityname'] . '</option>';
-}
-?>
+            while ($datas = mysqli_fetch_array($cityresult)) {
+              echo '<option value="' . $datas['id'] . '">' . $datas['cityname'] . '</option>';
+            }
+            ?>
           </select>
         </div>
       </div>
@@ -232,4 +232,4 @@ while ($datas = mysqli_fetch_array($cityresult)) {
 
 
 <?php include('footer.php');
- ?>
+?>
